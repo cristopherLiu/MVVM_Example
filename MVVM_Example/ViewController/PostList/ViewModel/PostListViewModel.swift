@@ -6,9 +6,10 @@
 //  Copyright © 2020 劉紘任. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PostListViewModel {
   let isLoading = Observable<Bool>(value: false)
   let sectionViewModels = Observable<[SectionViewModel]>(value: [])
+  let showImageDialog = Observable<UIImage>(value: UIImage())
 }

@@ -13,10 +13,10 @@ protocol RowViewModel {
 
 /// Conform this protocol to handles user press action
 protocol ViewModelPressible {
-    var cellPressed: (()->Void)? { get set }
+  var cellPressed: (()->Void)? { get set }
 }
 
 protocol CellConfiguraable {
-    func setup(viewModel: RowViewModel)
+  func setup(viewModel: RowViewModel)
 }
 

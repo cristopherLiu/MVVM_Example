@@ -84,6 +84,11 @@ class PostListVC: UIViewController {
     viewModel.sectionViewModels.addObserver(fireNow: false) { [weak self] (models) in
       self?.tableView.reloadData()
     }
+    
+    viewModel.showImageDialog.addObserver(fireNow: false) { [weak self] (image) in
+      let dialog = ImageViewerVC(image: image)
+      self?.present(dialog, animated: true, completion: nil)
+    }
   }
 }
 

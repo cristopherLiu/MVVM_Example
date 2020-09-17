@@ -6,7 +6,7 @@
 //  Copyright © 2020 劉紘任. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PhotoCellViewModel: RowViewModel, ViewModelPressible {
   

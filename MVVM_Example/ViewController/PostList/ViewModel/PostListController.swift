@@ -56,7 +56,8 @@ class PostListController {
         let postImage = AsyncImage(url: photoPost.imageURL, imageDownloadHelper: ImageDownloadHelper())
         let photoCellViewModel = PhotoCellViewModel(name: photoPost.poster, avatar: avatarImage, postImage: postImage)
         photoCellViewModel.cellPressed = {
-          print("Open a photo viewer!")
+//          print("Open a photo viewer! --> \(photoCellViewModel.postImage.image)")
+          self.viewModel.showImageDialog.value = photoCellViewModel.postImage.image
         }
         vm = photoCellViewModel
       }

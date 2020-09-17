@@ -10,5 +10,5 @@ import Foundation
 import UIKit
 
 extension UIImage {
-  static let empty = UIImage(named: "empty")
+  static let common_cancel_w = UIImage(named: "common_cancel_w")
 }
