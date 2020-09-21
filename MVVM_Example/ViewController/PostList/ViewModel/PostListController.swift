@@ -57,7 +57,7 @@ class PostListController {
         let photoCellViewModel = PhotoCellViewModel(name: photoPost.poster, avatar: avatarImage, postImage: postImage)
         photoCellViewModel.cellPressed = {
 //          print("Open a photo viewer! --> \(photoCellViewModel.postImage.image)")
-          self.viewModel.showImageDialog.value = photoCellViewModel.postImage.image
+//          self.viewModel.showImageDialog.value = photoCellViewModel.postImage.image
         }
         vm = photoCellViewModel
       }
@@ -99,13 +99,13 @@ class PostListController {
   
   private func sectionGroupingKey(_ base: Base) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-mm-dd"
+    formatter.dateFormat = "yyyy-MM-dd"
     return formatter.string(from: base.time)
   }
   
   private func dateStringDescComparator() -> ((String, String) -> Bool) {
     let formatter = DateFormatter()
-    formatter.dateFormat = "yyyy-mm-dd"
+    formatter.dateFormat = "yyyy-MM-dd"
     return { (d1Str, d2Str) -> Bool in
       if let d1 = formatter.date(from: d1Str), let d2 = formatter.date(from: d2Str) {
         return d1 > d2

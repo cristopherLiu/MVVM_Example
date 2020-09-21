@@ -19,7 +19,7 @@
 		4F03D007250F673700A403CE /* Encodable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF2250F673700A403CE /* Encodable+Extension.swift */; };
 		4F03D008250F673700A403CE /* Data+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF3250F673700A403CE /* Data+Extension.swift */; };
 		4F03D009250F673700A403CE /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF4250F673700A403CE /* Int+Extension.swift */; };
-		4F03D00A250F673700A403CE /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF5250F673700A403CE /* MyCell.swift */; };
+		4F03D00A250F673700A403CE /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF5250F673700A403CE /* UITableViewCell.swift */; };
 		4F03D00B250F673700A403CE /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF6250F673700A403CE /* UIColor.swift */; };
 		4F03D00C250F673700A403CE /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF7250F673700A403CE /* UIImage+Extension.swift */; };
 		4F03D00D250F673700A403CE /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F03CFF8250F673700A403CE /* UILabel+Extension.swift */; };
@@ -68,7 +68,7 @@
 		4F03CFF2250F673700A403CE /* Encodable+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+Extension.swift"; sourceTree = "<group>"; };
 		4F03CFF3250F673700A403CE /* Data+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+Extension.swift"; sourceTree = "<group>"; };
 		4F03CFF4250F673700A403CE /* Int+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
-		4F03CFF5250F673700A403CE /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
+		4F03CFF5250F673700A403CE /* UITableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
 		4F03CFF6250F673700A403CE /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		4F03CFF7250F673700A403CE /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4F03CFF8250F673700A403CE /* UILabel+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				4F03CFF2250F673700A403CE /* Encodable+Extension.swift */,
 				4F03CFF4250F673700A403CE /* Int+Extension.swift */,
 				4F03CFFA250F673700A403CE /* JSONDecoder+Extension.swift */,
-				4F03CFF5250F673700A403CE /* MyCell.swift */,
+				4F03CFF5250F673700A403CE /* UITableViewCell.swift */,
 				4F03CFED250F673700A403CE /* String+Extension.swift */,
 				4F03CFEC250F673700A403CE /* UIApplication+Extension.swift */,
 				4F03CFF6250F673700A403CE /* UIColor.swift */,
@@ -383,7 +383,7 @@
 				4F86A25A25131262005EE12E /* SectionViewModel.swift in Sources */,
 				4F03CFFF250F673700A403CE /* Date+Extension.swift in Sources */,
 				4F03D008250F673700A403CE /* Data+Extension.swift in Sources */,
-				4F03D00A250F673700A403CE /* MyCell.swift in Sources */,
+				4F03D00A250F673700A403CE /* UITableViewCell.swift in Sources */,
 				4F03D00B250F673700A403CE /* UIColor.swift in Sources */,
 				4F03D018250F69F600A403CE /* PhotoPost.swift in Sources */,
 				4F03D000250F673700A403CE /* UIColor+Extension.swift in Sources */,

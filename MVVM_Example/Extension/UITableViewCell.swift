@@ -13,6 +13,10 @@ public extension UITableViewCell {
   static func cellIdentifier() -> String {
     return String(describing: self)
   }
+  
+  var tableView: UITableView? {
+    return parentView(of: UITableView.self)
+  }
 }
 
 public extension UICollectionViewCell{

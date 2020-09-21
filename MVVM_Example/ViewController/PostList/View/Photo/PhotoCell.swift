@@ -60,6 +60,14 @@ class PhotoCell: UITableViewCell, CellConfiguraable {
   
   var viewModel: PhotoCellViewModel?
   
+  private lazy var imageViewW: NSLayoutConstraint = {
+    return self.contentImageView.widthAnchor.constraint(equalToConstant: 200)
+  }()
+  
+  private lazy var imageViewH: NSLayoutConstraint = {
+    return self.contentImageView.heightAnchor.constraint(equalToConstant: 200)
+  }()
+  
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
@@ -78,10 +86,10 @@ class PhotoCell: UITableViewCell, CellConfiguraable {
       
       nameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor),
       nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 16),
-      nameLabel.rightAnchor.constraint(lessThanOrEqualTo: contentView.rightAnchor, constant: -16),
+      nameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -16),
       
       bgView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 16),
-      bgView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -120),
+      bgView.rightAnchor.constraint(lessThanOrEqualTo: contentView.rightAnchor, constant: -16),
       bgView.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 24),
       bgView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -24),
       
@@ -89,7 +97,8 @@ class PhotoCell: UITableViewCell, CellConfiguraable {
       contentImageView.rightAnchor.constraint(equalTo: bgView.rightAnchor, constant: -16),
       contentImageView.topAnchor.constraint(equalTo: bgView.topAnchor, constant: 24),
       contentImageView.bottomAnchor.constraint(equalTo: bgView.bottomAnchor, constant: -24),
-      contentImageView.heightAnchor.constraint(equalToConstant: 350),
+      imageViewW,
+      imageViewH,
       
       loadingIndicator.centerXAnchor.constraint(equalTo: bgView.centerXAnchor),
       loadingIndicator.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
@@ -110,29 +119,54 @@ class PhotoCell: UITableViewCell, CellConfiguraable {
     guard let viewModel = viewModel as? PhotoCellViewModel else { return }
     self.viewModel = viewModel
     
+    // 頭像
     profileImageView.image = viewModel.avatar.image
     viewModel.avatar.completeDownload = { [weak self] image in
       self?.profileImageView.image = image
     }
     viewModel.avatar.startDownload()
     
+    // 人名
     nameLabel.text = viewModel.name
     
-//    contentImageView.image = viewModel.postImage.image
-    
-    self.loadingIndicator.startAnimating()
-    viewModel.postImage.completeDownload = { [weak self] image in
-      self?.loadingIndicator.stopAnimating()
-      self?.contentImageView.image = image
+    // 內容
+    if let downloadImage = viewModel.postImage.downloadImage {
+      
+      // 已有下載到內容
+      self.setImage(downloadImage)
+    } else {
+      
+      self.loadingIndicator.startAnimating()
+      viewModel.postImage.completeDownload = { [weak self] image in
+        self?.loadingIndicator.stopAnimating()
+        
+        if let image = image {
+          self?.setImage(image)
+        }
+      }
+      viewModel.postImage.startDownload()
     }
-    viewModel.postImage.startDownload()
-    
     setNeedsLayout()
+  }
+  
+  private func setImage(_ image: UIImage) {
+    
+    let isNeedsLayout = self.imageViewH.constant != image.size.height
+    
+    self.imageViewW.constant = image.size.width
+    self.imageViewH.constant = image.size.height
+    self.contentImageView.image = image
+    
+    if isNeedsLayout {
+      guard let tableView = self.tableView, let indexPath = tableView.indexPath(for: self) else { return }
+      tableView.reloadRows(at: [indexPath], with: .none)
+    }
   }
   
   override func prepareForReuse() {
     super.prepareForReuse()
-    self.contentImageView.image = nil
+    
+    self.contentImageView.image = nil    
     viewModel?.postImage.completeDownload = nil
     viewModel?.cellPressed = nil
   }

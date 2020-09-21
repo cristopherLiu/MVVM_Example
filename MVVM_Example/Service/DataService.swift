@@ -25,12 +25,24 @@ class DataService {
         let desc = String.loremIpsum
         return TextPost(id: id, time: time, avatarURL: avatarURL, poster: poster, text: desc)
       } else {
-        let imageURL = "https://picsum.photos/200/300/?random"
+        let imageURL = randomUrl
         return PhotoPost(id: id, time: time, avatarURL: avatarURL, poster: poster, imageURL: imageURL)
       }
     }
     return bases
   }()
+  
+  private let urls = [
+    "https://picsum.photos/300/300/?random",
+    "https://picsum.photos/200/400/?random",
+    "https://picsum.photos/400/500/?random",
+    "https://picsum.photos/500/200/?random"
+  ]
+  
+  private var randomUrl: String {
+    let randIdx = Int(arc4random_uniform(UInt32(urls.count)))
+    return urls[randIdx]
+  }
   
   /// Fetch feeds from server
   func fetchData(complete: @escaping ([Base]) -> Void) {

@@ -15,22 +15,26 @@ class AsyncImage {
   let url: URL
   
   /// The downloeded image, it could be a placeholder image if the image is downloading or the download is failed
-  var image: UIImage {
+  var image: UIImage? {
     return self.imageStore ?? placeholder
+  }
+  
+  var downloadImage: UIImage? {
+    return self.imageStore
   }
   
   /// Image download complete closure
   var completeDownload: ((UIImage?) -> Void)?
   
   private var imageStore: UIImage?
-  private var placeholder: UIImage
+  private var placeholder: UIImage?
   
   private let imageDownloadHelper: ImageDownloadHelperProtocol
   
   private var isDownloading: Bool = false
   
   init(url: String,
-       placeholderImage: UIImage = #imageLiteral(resourceName: "imagePlaceholder") ,
+       placeholderImage: UIImage? = nil,
        imageDownloadHelper: ImageDownloadHelperProtocol = MockImageDownloadHelper()) {
     self.url = URL(string: url)!
     self.placeholder = placeholderImage
